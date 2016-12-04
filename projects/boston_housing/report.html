@@ -205,7 +205,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Import libraries necessary for this project</span>
@@ -277,7 +277,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Minimum price of the data</span>
@@ -389,7 +389,7 @@ PTRATIO - ratio doens't reflect house price. Becuase hight value reflect that we
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;r2_score&#39;</span>
@@ -453,7 +453,7 @@ PTRATIO - ratio doens't reflect house price. Becuase hight value reflect that we
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Calculate the performance of this model</span>
@@ -512,7 +512,7 @@ Yes. The coefficient of determination is near to 1, we have small number of erro
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;train_test_split&#39;</span>
@@ -559,7 +559,7 @@ Yes. The coefficient of determination is near to 1, we have small number of erro
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> We need sufficient nubmer of train data to train model. On the same time we need to have test set to validate model and get mean squared error.</p>
+<p><strong>Answer: </strong> We need sufficient nubmer of train data to train model. Using training data we create model. But to evaluate and find sweet spot we need to have test data as well. This gives us a quality metric and we can decide is the model good or bad. Test data helps us select pick the model with the best accuracy.</p>
 
 </div>
 </div>
@@ -585,6 +585,19 @@ Yes. The coefficient of determination is near to 1, we have small number of erro
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1683,7 +1696,7 @@ hp2ZAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-Graph with max_depth=3, the more training points are added the score dropes. On the same time testing score increase. More training points can lead to overfitting (high variance). But we need to generalize model.</p>
+Graph with max_depth=3, the more training points are added the score dropes. On the same time testing score increase. As we add more data points the error decrease. We can find that at some point more data doesn't show good performance. So we can converge at this test size. As we see in graph after 300 training points performance is small.</p>
 
 </div>
 </div>
@@ -2189,7 +2202,7 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The model trained with a maximum depath of 1 has high bias. In oposite the model with max depth 10 has high variance. The best max depth is 3 or 4.</p>
+<p><strong>Answer: </strong> The model trained with a maximum depath of 1 has high bias. In oposite the model with max depth 10 has high variance. The best max depth is 3 or 4. Max depth 1 shows small score on the graph. Max depth 10 shows big difference between training score and test score.</p>
 
 </div>
 </div>
@@ -2261,7 +2274,7 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> K-fold split data for k data buckets. Applies K learnings, where one bucket is for testing and K-1 are for trainging. Each bucket will have data_size / K. Using cross-validation we can find better model. Also it's good if we have small data set.</p>
+<p><strong>Answer: </strong> K-fold split data for k data buckets. Applies K learnings, where one bucket is for testing and K-1 are for trainging. Each bucket will have data_size / K. Using cross-validation we can find better model. At the end grid search collect all errors rates and pick the model with the smallest one. Also it's good if we have small data set. Crossvalidation for grid search is good that we can run it with different parameters and easely change them.</p>
 
 </div>
 </div>
@@ -2297,7 +2310,7 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Import &#39;make_scorer&#39;, &#39;DecisionTreeRegressor&#39;, and &#39;GridSearchCV&#39;</span>
@@ -2360,7 +2373,7 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Fit the training data to the model using grid search</span>
@@ -2443,7 +2456,7 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Produce a matrix for client data</span>
@@ -2454,6 +2467,8 @@ mKBgCc8YY0xQsIRnjDEmKFjCM8YYExQs4RljjAkK/wsgw+saO/lpVQAAAABJRU5ErkJggg==
 <span class="c"># Show predictions</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">client_data</span><span class="p">)):</span>
     <span class="k">print</span> <span class="s">&quot;Predicted selling price for Client {}&#39;s home: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
+
+<span class="n">features</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2473,6 +2488,75 @@ Predicted selling price for Client 3&apos;s home: $939,225.00
 </div>
 </div>
 
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RM</th>
+      <th>LSTAT</th>
+      <th>PTRATIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>489.000000</td>
+      <td>489.000000</td>
+      <td>489.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>6.240288</td>
+      <td>12.939632</td>
+      <td>18.516564</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.643650</td>
+      <td>7.081990</td>
+      <td>2.111268</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.561000</td>
+      <td>1.980000</td>
+      <td>12.600000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.880000</td>
+      <td>7.370000</td>
+      <td>17.400000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>6.185000</td>
+      <td>11.690000</td>
+      <td>19.100000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.575000</td>
+      <td>17.120000</td>
+      <td>20.200000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.398000</td>
+      <td>37.970000</td>
+      <td>22.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2483,9 +2567,9 @@ Predicted selling price for Client 3&apos;s home: $939,225.00
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-Client 1: \$408,030.00  this is good price. Median is a littel bit less.
-Client 2: \$233,800.00  this price is small.
-Client 3: \$939,225.00  this price is expensive.
+Client 1: \$408,030.00  this is good price. Median is a littel bit less. We have less the RM mean count. Good LSTAT (mean is 12.93). PTRATIO seem also low.
+Client 2: \$233,800.00  this price is small. Because poverty level is high and student-teach level is also high.
+Client 3: \$939,225.00  this price is expensive. Because it's expensive district (poverty level low) and has good student-teacher lever.
 The prices seems reasonable.</p>
 
 </div>
@@ -2562,7 +2646,7 @@ Range in prices: $73,357.39
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-The infrastucture of the city changes fast. Real estate very fast response to each changies. Model of 1978 year is irrelevant for current situation. Probably we need more features to predict better (like bathrooms count, garden...). The model shows consistent predictions for 1978 year. The model can only applied to Boston.</p>
+The infrastucture of the city changes fast. Real estate very fast response to each changies. Model of 1978 year is irrelevant for current situation. Probably we need more features to predict better (like bathrooms count, garden...). The model shows consistent predictions for 1978 year. The model can only applied to Boston and could not be used for real-world settings. We need get last data and probably add more relevant features.</p>
 
 </div>
 </div>
