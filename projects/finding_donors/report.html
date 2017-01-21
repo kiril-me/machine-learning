@@ -320,7 +320,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Total number of records</span>
@@ -333,7 +333,7 @@ div#notebook {
 <span class="n">n_at_most_50k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span> <span class="n">data</span><span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;income&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;&lt;=50K&#39;</span> <span class="p">]</span> <span class="p">)</span>
 
 <span class="c"># TODO: Percentage of individuals whose income is more than $50,000</span>
-<span class="n">greater_percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_greater_50k</span> <span class="o">/</span> <span class="n">n_records</span> <span class="p">)</span>
+<span class="n">greater_percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span> <span class="n">n_greater_50k</span> <span class="p">)</span> <span class="o">/</span> <span class="n">n_records</span>
 
 <span class="c"># Print the results</span>
 <span class="k">print</span> <span class="s">&quot;Total number of records: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
@@ -355,7 +355,7 @@ div#notebook {
 <pre>Total number of records: 45222
 Individuals making more than $50,000: 11208
 Individuals making at most $50,000: 34014
-Percentage of individuals making more than $50,000: 24.00%
+Percentage of individuals making more than $50,000: 24.78%
 </pre>
 </div>
 </div>
@@ -2351,7 +2351,7 @@ SGD shows better accuracy and fscore on test data. Even decision tree show good 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> 
-We choose SGD algorithm because it shows the good prediction. It better generalizes our data. SGD better process corner cases where we have uncertainties of person income (income is around $50,0000). SGD select the random subset of our data and try to predict results. Next step it compares our result with actual result and make adjustments accordingly. We repeat it until we succeed with the result (converge).</p>
+We choose SGD algorithm because it shows the good prediction. It better generalizes our data. SGD better process corner cases where we have uncertainties of person income (income is around $50,0000). SGD splits data linearly. Takes features about individuals whose census data is known (e.g., age, gender, etc) and creates a model that assigns a "weight" to these features that assess their importance in determining whether the individual has income over 50k or not. To get weight we need to train model. We have labeled data and use them to teach our model. The algorithm selects the random subset of our data and tries to predict results. Next step it compares predicted result with actual result and makes weights adjustments accordingly. We repeat it until we succeed with the result (converge).</p>
 
 </div>
 </div>
