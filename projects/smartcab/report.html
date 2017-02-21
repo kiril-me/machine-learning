@@ -5131,7 +5131,8 @@ This policy looks correct because if light is red we need to stop.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-Using gamma it will reward as mutch as current reward. Gamma link action with the previous state. But we have local situation on the road and observ only given situation. In this case the learning doesn't work at that well. So we use gamma=0 and make decision based on current situation.</p>
+Using gamma it will reward as mutch as current reward. But we make trials and the environment is changing. We don't need to reward based on historical actions.</p>
+<p>Gamma link action with the previous state. But we have local situation on the road and observ only given situation. In this case the learning doesn't work at that well. So we use gamma=0 and make decision based on current situation.</p>
 
 </div>
 </div>
