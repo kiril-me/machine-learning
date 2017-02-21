@@ -18,7 +18,7 @@ class LearningAgent(Agent):
         self.Q = dict()          # Create a Q-table which will be a dictionary of tuples
         self.epsilon = epsilon   # Random exploration factor
         self.alpha = alpha       # Learning factor
-        self.gamma = 1.0
+        self.gamma = 0.0
         self.epsilon_decay = 0.0025
         
         self.trial = 0
@@ -70,7 +70,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set 'state' as a tuple of relevant data for the agent        
-        state = (inputs["light"], inputs["oncoming"], inputs["left"], inputs["right"], waypoint)
+        state = (inputs["light"], inputs["oncoming"], inputs["left"], waypoint)
 
         return state
 
@@ -99,10 +99,7 @@ class LearningAgent(Agent):
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
         if self.learning and state not in self.Q:
-            value = dict()
-            for action in self.valid_actions:
-                value[action] = 0.0
-            self.Q[state] = value
+            self.Q[state] = {action: 0.0 for action in self.valid_actions}
 
         return
 
@@ -123,18 +120,9 @@ class LearningAgent(Agent):
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
         if self.learning and random.random() > self.epsilon:
-            value = self.Q[state]
-            maxVal = None
-            best = None
-            for act in value:
-                if best is None or value[act] > maxVal:
-                    maxVal = value[act]
-                    best = [ act ]
-                elif value[act] == maxVal:
-                    best.append(act)
-            if best is None:
-                best = self.valid_actions
-            action = random.choice(best)
+            maxQ = self.get_maxQ(state)
+            best_actions = [action for action in self.valid_actions if self.Q[state][action] == maxQ]
+            action = random.choice(best_actions)
         else:
             action = random.choice(self.valid_actions)
  
@@ -153,7 +141,7 @@ class LearningAgent(Agent):
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
         if self.learning:
             old_value = self.Q[state][action]
-            learned = reward # + self.gamma * self.get_maxQ(state)
+            learned = reward + self.gamma * self.get_maxQ(state)
             self.Q[state][action] = old_value + self.alpha * (learned - old_value)
         return
 
@@ -190,7 +178,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = 0.35)
+    agent = env.create_agent(LearningAgent, learning = True, epsilon = 1, alpha = 0.4)
     
     ##############
     # Follow the driving agent
@@ -213,6 +201,7 @@ def run():
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
     sim.run(n_test = 100, tolerance = 0.0001)
+    #sim.run(n_test = 10)
 
 
 if __name__ == '__main__':
